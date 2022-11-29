@@ -1,0 +1,27 @@
+{
+  "name": "autochoosing.web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.2",
+    "mini-css-extract-plugin": "^2.7.0",
+    "postcss-loader": "^7.0.1",
+    "sass": "^1.56.1",
+    "vue-loader": "^17.0.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}
