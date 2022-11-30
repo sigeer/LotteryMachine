@@ -3,7 +3,7 @@
         <div class="row margin-bottom-20">
             <span class="col-2">选择模式</span>
             <div class="col-6">
-                <select class="form-control input-group-sm" v-model="nowKey">
+                <select class="form-control input-group-sm" v-model="nowKey" @change="onSettingChange">
                     <option v-for="x in dataRef.dataSource" :value="x.key">
                         {{ x.name }}
                     </option>
@@ -17,8 +17,7 @@
         <button class="btn btn-outline-info" @click="run">随机</button>
     </div>
 
-    <div class="s-content row">
-
+    <div class="s-content row margin-bottom-20">
         <div v-for="x in nowSetting.items" :class="['s-item', resultKey === x.key ? 's-item-selected' : '']">
             {{x.name}}（{{x.rate * 100}}%）
             <svg v-if="resultKey === x.key" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -28,10 +27,14 @@
         </div>
 
     </div>
+
+    <div class="row" v-if="nowKey">
+        选择了【{{resultItem.name}}】 - 生成时间：{{new Date()}}
+    </div>
 </template>
 
 <script>
-    import { Machine } from './../models/Machine';
+    import { Machine, MachineItem } from './../models/Machine';
     const Source = [
         {
             name: "是/否",
@@ -61,6 +64,19 @@
             }, {
                 name: "失败",
                 rate: 0.9
+            }]
+        },
+        {
+            name: "石头剪刀布",
+            items: [{
+                name: "石头",
+                rate: 1 / 3
+            }, {
+                name: "剪刀",
+                rate: 1 / 3
+            }, {
+                name: "布",
+                rate: 1 / 3
             }]
         },
         {
@@ -95,15 +111,24 @@
             const showAddModal = () => {
 
             }
-            const resultKey = Vue.ref(0);
+
             const nowKey = Vue.ref(0);
             const nowSetting = Vue.computed(() => {
                 return dataRef.dataSource.find(x => x.key === Vue.unref(nowKey)) ?? new Machine();
             });
 
+            const resultKey = Vue.ref(0);
+            const resultItem = Vue.computed(() => {
+                return Vue.unref(nowSetting).items.find(x => x.key === Vue.unref(resultKey)) ?? new MachineItem();
+            })
+
             const run = () => {
                 const item = Vue.unref(nowSetting).run();
                 resultKey.value = item.key;
+            }
+
+            const onSettingChange = () => {
+                resultKey.value = 0;
             }
 
             return {
@@ -111,10 +136,13 @@
                 nowSetting,
 
                 resultKey,
+                resultItem,
+
                 run,
 
                 dataRef,
-                showAddModal
+                showAddModal,
+                onSettingChange
             };
         }
     }
