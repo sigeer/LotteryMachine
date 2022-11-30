@@ -269,11 +269,21 @@ module.exports = env => {
 
     const newConfigs = [
         {
+            libName: 'Component',
             name: "components",
             entryFile: "js/vue_components/vue_component.entry.js",
             basePath: "js/vue_components",
             folders: [
                 "js/vue_components"
+            ]
+        },
+        {
+            libName: 'Page',
+            name: "pages",
+            entryFile: "js/vue_pages/vue_page.entry.js",
+            basePath: "js/vue_pages",
+            folders: [
+                "js/vue_pages"
             ]
         }
     ]

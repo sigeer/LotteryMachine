@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AutoChoosing.Web.styles.css" asp-append-version="true" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="~/js/utils.js" asp-append-version="true"></script>
 </head>
 <body>
     <header>
@@ -31,21 +33,33 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" id="app">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - AutoChoosing.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2022 - 抽奖机 - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
-
+    <link rel="stylesheet" href="~/dist/css/pages.min.css" asp-append-version="true" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script src="~/dist/js/pages.min.js" asp-append-version="true" ></script>
+    <script src="~/dist/js/components.min.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        const app = Vue.createApp({
+
+        });
+        app.use(Page);
+        app.use(Component);
+
+        app.mount("#app");
+    </script>
 </body>
+
 </html>
