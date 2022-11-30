@@ -352,3 +352,5 @@ ASALocalRun/
 
 **/node_modules/
 /src/AutoChoosing.Web/wwwroot/dist
+/src/AutoChoosing.Web/wwwroot/js/vue_pages/vue_page.entry.js
+/src/AutoChoosing.Web/wwwroot/js/vue_components/vue_component.entry.js

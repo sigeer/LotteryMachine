@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\dist\css\" />
+    <Folder Include="wwwroot\js\vue_components\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoChoosing.Core\AutoChoosing.Core.csproj" />
   </ItemGroup>
 
 </Project>

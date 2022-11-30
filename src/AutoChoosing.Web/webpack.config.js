@@ -20,7 +20,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 //返回完整路径
-const rxPath = function () {
+const getAbsolutePath = function () {
     const paths = Array.from(arguments).map(x => path.resolve(staticRoot, x));
 
     return paths.length === 1 ? paths[0] : paths;
@@ -94,7 +94,7 @@ const genVueEntryFile = (model) => {
         .forEach(folder => {
             let rel = folder.replace(model.basePath, ".");
 
-            let dir = rxPath(folder);
+            let dir = getAbsolutePath(folder);
 
             if (!fs.existsSync(dir)) {
                 return;
@@ -121,7 +121,7 @@ export default {
     }
 }`;
 
-    fs.writeFileSync(rxPath(model.entryFile), content, (err) => {
+    fs.writeFileSync(getAbsolutePath(model.entryFile), content, (err) => {
         if (err) return console.log(err);
     });
 }
@@ -132,7 +132,7 @@ const compileVue = (item, outputDir) => {
         mode: process.env.NODE_ENV || "development",
 
         output: {
-            path: rxPath(outputDir),
+            path: getAbsolutePath(outputDir),
             filename: "[name].min.js",
             environment: {
                 arrowFunction: false,
@@ -235,7 +235,7 @@ const compileVue = (item, outputDir) => {
     config.name = item.name;
 
     config.entry = {};
-    config.entry[item.name] = typeof item.entryFile === "string" ? rxPath(item.entryFile) : item.entryFile.map(e => rxPath(e));
+    config.entry[item.name] = typeof item.entryFile === "string" ? getAbsolutePath(item.entryFile) : item.entryFile.map(e => getAbsolutePath(e));
 
     if (item.libName || item.isLib) {
         config.output.library = {
@@ -262,18 +262,28 @@ module.exports = env => {
     scssEntries.forEach(x =>
         compileScss(x,
             target,
-            rxPath(distCssFolder)
+            getAbsolutePath(distCssFolder)
         )
     );
     //Compile SCSS files End
 
     const newConfigs = [
         {
+            libName: 'Component',
             name: "components",
-            entryFile: "js/vue_components/vue_addon.entry.js",
+            entryFile: "js/vue_components/vue_component.entry.js",
             basePath: "js/vue_components",
             folders: [
                 "js/vue_components"
+            ]
+        },
+        {
+            libName: 'Page',
+            name: "pages",
+            entryFile: "js/vue_pages/vue_page.entry.js",
+            basePath: "js/vue_pages",
+            folders: [
+                "js/vue_pages"
             ]
         }
     ]
