@@ -14,9 +14,7 @@ RUN npm install && npm run dev
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["../NuGet.Config", "."]
-COPY [".", "./AutoChoosing.Web/"]
-COPY ["../AutoChoosing.Core/", "./AutoChoosing.Core/"]
+COPY . .
 # Test Console
 RUN ls
 RUN dotnet restore "./AutoChoosing.Web/AutoChoosing.Web.csproj"
