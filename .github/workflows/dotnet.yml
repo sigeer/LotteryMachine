@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build Image
-      run: docker build -t "lottery_machine:1" -f ./src/AutoChoosing.Web/Dockerfile
+      run: docker build -t "lottery_machine:1" -f ./src/AutoChoosing.Web/Dockerfile ./src/AutoChoosing.Web
     - name: Login
       run: docker login -u{{secrets.DOCKERUNAME}} -p{{secrets.DOCKERPASSWORD}} registry.cn-hangzhou.aliyuncs.com
     - name: Push
