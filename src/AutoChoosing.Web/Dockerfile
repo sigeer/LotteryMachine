@@ -4,14 +4,21 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
 
+# Compile JS Files
+FROM node:16 AS webpack
+WORKDIR /src
+COPY "/AutoChoosing.Web" "./"
+RUN npm install && npm run dev
+
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["NuGet.Config", "."]
-COPY ["AutoChoosing.Web/AutoChoosing.Web.csproj", "AutoChoosing.Web/"]
-COPY ["AutoChoosing.Core/AutoChoosing.Core.csproj", "AutoChoosing.Core/"]
+COPY ["../NuGet.Config", "."]
+COPY ["AutoChoosing.Web.csproj", "AutoChoosing.Web/"]
+COPY ["AutoChoosing.Core.csproj", "AutoChoosing.Core/"]
 RUN dotnet restore "AutoChoosing.Web/AutoChoosing.Web.csproj"
 COPY . .
 WORKDIR "/src/AutoChoosing.Web"
+COPY --from=webpack "/src/AutoChoosing.Web/wwwroot" "./AutoChoosing.Web/wwwroot"
 RUN dotnet build "AutoChoosing.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
