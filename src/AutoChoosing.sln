@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoChoosing.Core", "AutoCh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{BB7BDAE2-658D-424C-A6E0-02A95667143D}"
 	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
 		NuGet.Config = NuGet.Config
 		README.md = README.md
 	EndProjectSection
@@ -17,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5D456E3A-B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoChoosing.Web", "AutoChoosing.Web\AutoChoosing.Web.csproj", "{EFA7FA3E-A544-4C72-993A-71561F54CEE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoChoosing.Test", "AutoChoosing.Test\AutoChoosing.Test.csproj", "{0FF60B24-26BD-4742-BB74-3A630E88BE4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoChoosing.Test", "AutoChoosing.Test\AutoChoosing.Test.csproj", "{0FF60B24-26BD-4742-BB74-3A630E88BE4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
