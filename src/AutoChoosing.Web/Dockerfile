@@ -20,7 +20,7 @@ RUN dotnet build "AutoChoosing.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "AutoChoosing.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
-COPY --from=webpack "/src/wwwroot" "/app/publish"
+COPY --from=webpack "/src/wwwroot" "/app/publish/wwwroot"
 # Test Console
 RUN ls /app/publish/wwwroot
 
