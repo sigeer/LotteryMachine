@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env: 
-      ImageFullName: registry.cn-hangzhou.aliyuncs.com/sigeer/lottery_machine:3
+      ImageFullName: registry.cn-hangzhou.aliyuncs.com/sigeer/lottery_machine:4
 
     steps:
     - uses: actions/checkout@v3
