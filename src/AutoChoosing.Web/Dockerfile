@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 
 # Compile JS Files
-FROM node:16 AS webpack
+FROM node:14 AS webpack
 WORKDIR /src
 COPY . .
 # Test Console
