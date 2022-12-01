@@ -18,7 +18,7 @@ jobs:
       run: docker login -u${{secrets.DOCKERUNAME}} -p${{secrets.DOCKERPASSWORD}} registry.cn-hangzhou.aliyuncs.com
 
     - name: Build Image
-      run: docker build -t "sigeer/lottery_machine:1" -f ./src/AutoChoosing.Web/Dockerfile ./src
+      run: docker build -t "registry.cn-hangzhou.aliyuncs.com/sigeer/lottery_machine:1" -f ./src/AutoChoosing.Web/Dockerfile ./src
 
     - name: Assert
       run: docker images
