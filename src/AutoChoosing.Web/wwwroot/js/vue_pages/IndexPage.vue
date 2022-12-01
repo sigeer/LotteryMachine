@@ -123,8 +123,11 @@
             })
 
             const run = () => {
-                const item = Vue.unref(nowSetting).run();
-                resultKey.value = item.key;
+                resultKey.value = 0;
+                Vue.nextTick(() => {
+                    const item = Vue.unref(nowSetting).run();
+                    resultKey.value = item.key;
+                });
             }
 
             const onSettingChange = () => {
