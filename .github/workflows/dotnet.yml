@@ -6,19 +6,16 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Build Image
-      run: docker build -t lottery_machine:1 -f ./Dockerfile
+      run: docker build -t "lottery_machine:1" -f ./src/AutoChoosing.Web/Dockerfile
     - name: Login
-      run: docker login --username={{secrets.UNAME}} registry.cn-hangzhou.aliyuncs.com
+      run: docker login -u{{secrets.DOCKERUNAME}} -p{{secrets.DOCKERPASSWORD}} registry.cn-hangzhou.aliyuncs.com
     - name: Push
-      run: docker push registry.cn-hangzhou.aliyuncs.com/sigeer/lottery_machine:1
+      run: docker push "registry.cn-hangzhou.aliyuncs.com/sigeer/lottery_machine:1"
