@@ -8,23 +8,21 @@ EXPOSE 80
 FROM node:14 AS webpack
 WORKDIR /src
 COPY ./AutoChoosing.Web .
-# Test Console
-RUN ls
 RUN npm install && npm run dev
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY . .
-# Test Console
-RUN ls
 RUN dotnet restore "./AutoChoosing.Web/AutoChoosing.Web.csproj"
 
 WORKDIR "/src/AutoChoosing.Web"
-COPY --from=webpack "/src/wwwroot" "./AutoChoosing.Web"
 RUN dotnet build "AutoChoosing.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "AutoChoosing.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
+COPY --from=webpack "/src/wwwroot" "/app/publish"
+# Test Console
+RUN ls /app/publish/wwwroot
 
 FROM base AS final
 WORKDIR /app
