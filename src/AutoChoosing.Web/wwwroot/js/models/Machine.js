@@ -12,7 +12,8 @@
         const defaultMax = 12;
         let maxDigCount = 0;
         this.items.forEach(x => {
-            maxDigCount = getDigitalCount(x.rate);
+            let currentDigitalCount = getDigitalCount(x.rate);
+            maxDigCount = maxDigCount > currentDigitalCount ? maxDigCount : currentDigitalCount;
         });
         return maxDigCount > defaultMax ? defaultMax : maxDigCount;
     }
