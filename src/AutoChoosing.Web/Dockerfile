@@ -20,7 +20,7 @@ RUN ls
 RUN dotnet restore "./AutoChoosing.Web/AutoChoosing.Web.csproj"
 
 WORKDIR "/src/AutoChoosing.Web"
-COPY --from=webpack "/src/wwwroot" "./AutoChoosing.Web/wwwroot"
+COPY --from=webpack "/src/wwwroot" "./AutoChoosing.Web"
 RUN dotnet build "AutoChoosing.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
