@@ -7,7 +7,7 @@ EXPOSE 80
 # Compile JS Files
 FROM node:14 AS webpack
 WORKDIR /src
-COPY . .
+COPY ./AutoChoosing.Web .
 # Test Console
 RUN ls
 RUN npm install && npm run dev
