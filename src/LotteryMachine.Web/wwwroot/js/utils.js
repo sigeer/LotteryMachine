@@ -17,3 +17,22 @@ function getRandom(min, max) {
     let root = Math.random();
     return Number(Math.floor(root * (max - min) + min));
 }
+
+Object.defineProperty(Object.prototype, 'clone', {
+    enumerable: false,
+    writable: true,
+    value: function () {
+        let type = Object.getPrototypeOf(this);
+        let json = JSON.parse(JSON.stringify(this));
+        let model = null;
+
+        if (({}).__proto__ !== type && type.constructor) {
+            model = new this.constructor(json);
+        } else {
+            model = Object.create(type);
+            Object.assign(model, json);
+        }
+
+        return model;
+    }
+})

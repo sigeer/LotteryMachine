@@ -13,17 +13,20 @@
                 </div>
                 <hr />
                 <div v-for="item in dataRef.editingModel.items" :key="item.key" class="row item">
-                    <div class="row">
-                        <div class="col-4">名称</div>
-                        <div class="col-4">
+                    <div class="col-4">
+                        <div class="form-label">名称</div>
+                        <div class="form-label">比例</div>
+                    </div>
+                    <div class="col-4">
+                        <div>
                             <input class="form-control form-control-sm" v-model="item.name" />
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">比例</div>
-                        <div class="col-4">
+                        <div>
                             <input class="form-control form-control-sm" type="number" v-model="item.rate" />
                         </div>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-danger" @click="removeItem(item)">删除</button>
                     </div>
                 </div>
                 <button class="btn btn-outline-info" style="width: 100%" @click="addItem">添加项</button>
@@ -46,13 +49,17 @@
     });
 
     const show = (model) => {
-        dataRef.editingModel = model ?? new Machine();
+        dataRef.editingModel = model?.clone() ?? new Machine();
 
         modal.value.show();
     }
 
     const addItem = () => {
         dataRef.editingModel.addItem();
+    }
+
+    const removeItem = (item) => {
+        dataRef.editingModel.removeItem(item);
     }
 
     const equal = (model, other) => {
@@ -94,6 +101,9 @@
 </script>
 
 <style scoped>
+    .form-label {
+        height: 31px;
+    }
     .body-container > .item:not(:last-child) {
         padding-bottom: 12px;
     }

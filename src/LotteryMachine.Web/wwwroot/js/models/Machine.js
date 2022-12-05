@@ -28,6 +28,10 @@ export class Machine {
         this.items.push(new MachineItem());
     }
 
+    removeItem(item) {
+        this.items = this.items.filter(x => x.key !== item.key);
+    }
+
     run() {
         if (!this.validate())
             throw new Error();
