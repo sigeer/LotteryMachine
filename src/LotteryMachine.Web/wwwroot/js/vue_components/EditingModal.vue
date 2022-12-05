@@ -6,18 +6,18 @@
         <template #modal-body>
             <div class="body-container">
                 <div class="row">
-                    <div class="col-4">名称</div>
-                    <div class="col-8">
+                    <div class="col-3">名称</div>
+                    <div class="col-9">
                         <input class="form-control form-control-sm" v-model="dataRef.editingModel.name" />
                     </div>
                 </div>
                 <hr />
                 <div v-for="item in dataRef.editingModel.items" :key="item.key" class="row item">
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="form-label">名称</div>
                         <div class="form-label">比例</div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <div>
                             <input class="form-control form-control-sm" v-model="item.name" />
                         </div>
@@ -25,11 +25,12 @@
                             <input class="form-control form-control-sm" type="number" v-model="item.rate" />
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <button class="btn btn-danger" @click="removeItem(item)">删除</button>
                     </div>
                 </div>
                 <button class="btn btn-outline-info" style="width: 100%" @click="addItem">添加项</button>
+                <button class="btn btn-outline-secondary" style="width: 100%" @click="autoSet">平均</button>
             </div>
         </template>
         <template #modal-footer>
@@ -48,18 +49,16 @@
         editingModel: new Machine()
     });
 
-    const show = (model) => {
-        dataRef.editingModel = model?.clone() ?? new Machine();
-
-        modal.value.show();
-    }
-
     const addItem = () => {
         dataRef.editingModel.addItem();
     }
 
     const removeItem = (item) => {
         dataRef.editingModel.removeItem(item);
+    }
+
+    const autoSet = () => {
+        dataRef.editingModel.autoSet();
     }
 
     const equal = (model, other) => {
@@ -93,6 +92,12 @@
         } else {
             alert("设置已存在");
         }
+    }
+
+    const show = (model) => {
+        dataRef.editingModel = model?.clone() ?? new Machine();
+
+        modal.value.show();
     }
 
     defineExpose({
