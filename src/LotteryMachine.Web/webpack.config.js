@@ -26,6 +26,17 @@ const getAbsolutePath = function () {
     return paths.length === 1 ? paths[0] : paths;
 };
 
+const mkdirsSync = function (dirname) {
+    if (fs.existsSync(dirname)) {
+        return true;
+    } else {
+        if (mkdirsSync(path.dirname(dirname))) {
+            fs.mkdirSync(dirname);
+            return true;
+        }
+    }
+}
+
 const getFilesInFolder = (folder, filter) => fs.readdirSync(folder).filter(x => filter ? filter(x) : true);
 
 //const copyFileContent = (output, fileName, folder) => {
@@ -40,12 +51,9 @@ const getFilesInFolder = (folder, filter) => fs.readdirSync(folder).filter(x => 
 //    fs.appendFileSync(output, `${content.trim()}\n`, { encoding: "utf8" });
 //};
 
-const compileScss = function (entry, target, outputDir) {
+const compileScss = function (entry, outputDir) {
     try {
         let entryFile = path.resolve(staticRoot, `styles/${entry}.scss`);
-        let targetForceFile = path.resolve(staticRoot, `styles/${entry}.${target}.scss`);
-
-        if (fs.existsSync(targetForceFile)) entryFile = targetForceFile;
 
         console.log(`Compiling ${setColor(entryFile)}`);
 
@@ -55,15 +63,22 @@ const compileScss = function (entry, target, outputDir) {
         });
 
         const outputFile = `${entry}.min.css`;
-        console.log(`compiled: ${setColor(outputFile)}, to ${setColor(outputDir, fgColors.yellow)}`);
+        const absoluteOutputPath = path.resolve(outputDir, outputFile);
+        console.log(`Compiled: ${setColor(absoluteOutputPath)}`);
 
-        fs.writeFile(path.resolve(outputDir, outputFile),
+        fs.writeFile(absoluteOutputPath,
             result.css,
-            fsErr => fsErr && console.error(fsErr));
+            err => {
+                if (err) {
+                    console.log("writeFile catch");
+                    console.error(err)
+                }
+            });
     } catch (err) {
+        console.log("compileScss catch");
         console.log(err);
     }
-    console.log("");
+    console.log("compileScss finished");
 }
 
 const fgColors = {
@@ -249,21 +264,22 @@ const compileVue = (item, outputDir) => {
 }
 
 module.exports = env => {
-    const target = env.target;
-
     const distFolder = "dist";
 
     const distJsFolder = distFolder + "/js";
     const distCssFolder = distFolder + "/css";
 
+    const distJsAbsolutePath = getAbsolutePath(distJsFolder);
+    const distCssAbsolutePath = getAbsolutePath(distCssFolder);
+
+    mkdirsSync(distJsAbsolutePath);
+    mkdirsSync(distCssAbsolutePath);
+
     //Compile SCSS files Start
     console.log(setColor("Compile SCSS", fgColors.green));
 
     scssEntries.forEach(x =>
-        compileScss(x,
-            target,
-            getAbsolutePath(distCssFolder)
-        )
+        compileScss(x, distCssAbsolutePath)
     );
     //Compile SCSS files End
 
