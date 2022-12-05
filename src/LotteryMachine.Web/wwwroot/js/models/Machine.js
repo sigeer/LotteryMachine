@@ -19,7 +19,13 @@ export class Machine {
     }
 
     validate() {
+        if (this.items.length === 0)
+            return false;
         return +this.items.reduce((a, b) => a + b.rate, 0).toFixed(this.MaxDigitCount) === 1
+    }
+
+    addItem() {
+        this.items.push(new MachineItem());
     }
 
     run() {
@@ -42,6 +48,20 @@ export class Machine {
             }
         }
         throw new Error();
+    }
+
+    equal(model) {
+        if (!model)
+            return false;
+
+        if (model.name === this.name && model.items.length == this.items.length) {
+            for (var i = 0; i < this.items.length; i++) {
+                if (!model.items.contains(x => x.name === this.items[i].name && x.rate === this.items[i].rate))
+                    return false;
+            }
+            return true;
+        }
+        return false;
     }
 }
 

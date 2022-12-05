@@ -268,15 +268,15 @@ module.exports = env => {
     //Compile SCSS files End
 
     const newConfigs = [
-        //{
-        //    libName: 'Component',
-        //    name: "components",
-        //    entryFile: "js/vue_components/vue_component.entry.js",
-        //    basePath: "js/vue_components",
-        //    folders: [
-        //        "js/vue_components"
-        //    ]
-        //},
+        {
+            libName: 'Component',
+            name: "components",
+            entryFile: "js/vue_components/vue_component.entry.js",
+            basePath: "js/vue_components",
+            folders: [
+                "js/vue_components"
+            ]
+        },
         {
             libName: 'Page',
             name: "pages",
