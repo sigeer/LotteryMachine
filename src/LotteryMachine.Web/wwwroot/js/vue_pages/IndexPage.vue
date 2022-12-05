@@ -3,7 +3,7 @@
         <div class="row margin-bottom-20">
             <span class="col-2">选择模式</span>
             <div class="col-6">
-                <select class="form-control input-group-sm" v-model="nowKey" @change="onSettingChange">
+                <select class="form-control input-group-sm form-select form-select-sm" v-model="nowKey" @change="onSettingChange">
                     <option v-for="x in dataRef.dataSource" :value="x.key">
                         {{ x.name }}
                     </option>

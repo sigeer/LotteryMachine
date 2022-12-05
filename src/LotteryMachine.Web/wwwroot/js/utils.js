@@ -18,6 +18,19 @@ function getRandom(min, max) {
     return Number(Math.floor(root * (max - min) + min));
 }
 
+String.isStringNullOrEmpty = function (e) {
+    if (e === null || e === undefined)
+        return true;
+
+    if (e === false)
+        return false;
+
+    if ((e || "").toString().trim().length <= 0)
+        return true;
+    return false;
+};
+
+
 Object.defineProperty(Object.prototype, 'clone', {
     enumerable: false,
     writable: true,
