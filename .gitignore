@@ -354,3 +354,4 @@ ASALocalRun/
 /src/LotteryMachine.Web/wwwroot/dist
 /src/LotteryMachine.Web/wwwroot/js/vue_pages/vue_page.entry.js
 /src/LotteryMachine.Web/wwwroot/js/vue_components/vue_component.entry.js
+/src/LotteryMachine.Web/package-lock.json
