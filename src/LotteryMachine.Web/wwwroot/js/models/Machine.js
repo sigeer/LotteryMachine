@@ -19,7 +19,7 @@ export class Machine {
     }
 
     validate() {
-        if (this.items.length === 0 || this.name.isStringNullOrEmpty())
+        if (this.items.length === 0 || String.isStringNullOrEmpty(this.name))
             return false;
         return +this.items.reduce((a, b) => a + b.rate, 0).toFixed(this.MaxDigitCount) === 1
     }
