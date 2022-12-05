@@ -9,7 +9,9 @@
                     </option>
                 </select>
             </div>
-            <button class="btn btn-outline-info btn-sm col-auto" @click="showAddModal">添加</button>
+            <button class="btn btn-outline-info btn-sm col-auto maring-right-12" @click="showAddModal">添加</button>
+            <button class="btn btn-outline-info btn-sm col-auto maring-right-12" @click="showEditModal">编辑</button>
+            <button class="btn btn-outline-info btn-sm col-auto" @click="showDeleteConfirm">删除</button>
         </div>
     </div>
 
@@ -31,6 +33,9 @@
     <div class="row" v-if="nowKey">
         选择了【{{resultItem.name}}】 - 生成时间：{{new Date()}}
     </div>
+
+    <editing-modal ref="editor" @submit="onSubmit">
+    </editing-modal>
 </template>
 
 <script>
@@ -105,11 +110,27 @@
     export default {
         setup() {
             const dataRef = Vue.reactive({
-                dataSource: Source.map(x => new Machine(x))
+                dataSource: Source.concat(JSON.parse(localStorage.getItem(StorageName) ?? "[]")).map(x => new Machine(x))
             });
 
+            const editor = Vue.ref(null);
             const showAddModal = () => {
-
+                Vue.unref(editor).show();
+            }
+            const onSubmit = () => {
+                location.reload();
+            }
+            const showEditModal = () => {
+                Vue.unref(editor).show(Vue.unref(nowSetting));
+            }
+            const showDeleteConfirm = () => {
+                const item = Vue.unref(nowSetting);
+                if (confirm(`确定删除${item.name}？`)) {
+                    let m = JSON.parse(localStorage.getItem(StorageName) ?? "[]");
+                    m = m.filter(x => x.key !== item.key);
+                    localStorage.setItem(StorageName, JSON.stringify(m));
+                    location.reload();
+                }
             }
 
             const nowKey = Vue.ref(0);
@@ -144,7 +165,12 @@
                 run,
 
                 dataRef,
+                editor,
+                onSubmit,
                 showAddModal,
+                showEditModal,
+                showDeleteConfirm,
+
                 onSettingChange
             };
         }

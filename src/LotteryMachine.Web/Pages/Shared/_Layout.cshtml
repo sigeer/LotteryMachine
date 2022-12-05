@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/LotteryMachine.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/css/main.min.css" asp-append-version="true" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="~/js/utils.js" asp-append-version="true"></script>
 </head>
@@ -14,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Ëæ»úÑ¡ÔñÆ÷</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">éšæœºé€‰æ‹©å™¨</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,10 +39,11 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - ³é½±»ú - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2022 - æŠ½å¥–æœº - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
     <link rel="stylesheet" href="~/dist/css/pages.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/css/components.min.css" asp-append-version="true" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -56,7 +56,7 @@
 
         });
         app.use(Page);
-        //app.use(Component);
+        app.use(Component);
 
         app.mount("#app");
     </script>

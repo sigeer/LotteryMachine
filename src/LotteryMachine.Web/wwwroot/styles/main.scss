@@ -1,3 +1,38 @@
-﻿.main-content{
-    width: 100%;
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px !important;
+}
+
+.margin-top-20 {
+    margin-top: 20px !important;
+}
+
+.maring-right-12 {
+    margin-right: 12px !important;
+}
+
+.maring-left-12 {
+    margin-left: 12px !important;
 }
