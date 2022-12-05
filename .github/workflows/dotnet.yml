@@ -26,5 +26,8 @@ jobs:
     - name: Assert
       run: docker images
 
-    - name: Push
-      run: docker push "$ImageFullName"
+    - name: Push Latest
+      run: docker push "$ImageFullName:latest"
+
+    - name: Push Version
+      run: docker push "$ImageFullName:$VersionName"
