@@ -1,0 +1,54 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Core", "LotteryMachine.Core\LotteryMachine.Core.csproj", "{CF750C08-9010-45EB-BE99-57501741C55A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{BB7BDAE2-658D-424C-A6E0-02A95667143D}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
+		NuGet.Config = NuGet.Config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{628F9947-00E4-402B-BAB3-C8C49D29B102}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5D456E3A-B4A8-474B-B1A7-DA78484C85ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Web", "LotteryMachine.Web\LotteryMachine.Web.csproj", "{EFA7FA3E-A544-4C72-993A-71561F54CEE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Test", "LotteryMachine.Test\LotteryMachine.Test.csproj", "{0FF60B24-26BD-4742-BB74-3A630E88BE4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF750C08-9010-45EB-BE99-57501741C55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF750C08-9010-45EB-BE99-57501741C55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF750C08-9010-45EB-BE99-57501741C55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF750C08-9010-45EB-BE99-57501741C55A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA7FA3E-A544-4C72-993A-71561F54CEE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA7FA3E-A544-4C72-993A-71561F54CEE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA7FA3E-A544-4C72-993A-71561F54CEE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA7FA3E-A544-4C72-993A-71561F54CEE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF60B24-26BD-4742-BB74-3A630E88BE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF60B24-26BD-4742-BB74-3A630E88BE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF60B24-26BD-4742-BB74-3A630E88BE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF60B24-26BD-4742-BB74-3A630E88BE4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CF750C08-9010-45EB-BE99-57501741C55A} = {628F9947-00E4-402B-BAB3-C8C49D29B102}
+		{EFA7FA3E-A544-4C72-993A-71561F54CEE9} = {628F9947-00E4-402B-BAB3-C8C49D29B102}
+		{0FF60B24-26BD-4742-BB74-3A630E88BE4B} = {5D456E3A-B4A8-474B-B1A7-DA78484C85ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03F20541-EBE1-46F9-96B2-3023C94558A5}
+	EndGlobalSection
+EndGlobal

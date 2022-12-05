@@ -351,6 +351,6 @@ ASALocalRun/
 .localhistory/
 
 **/node_modules/
-/src/AutoChoosing.Web/wwwroot/dist
-/src/AutoChoosing.Web/wwwroot/js/vue_pages/vue_page.entry.js
-/src/AutoChoosing.Web/wwwroot/js/vue_components/vue_component.entry.js
+/src/LotteryMachine.Web/wwwroot/dist
+/src/LotteryMachine.Web/wwwroot/js/vue_pages/vue_page.entry.js
+/src/LotteryMachine.Web/wwwroot/js/vue_components/vue_component.entry.js
