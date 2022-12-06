@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace LotteryMachine.Core.DataBase
 {
     public class DB_Item

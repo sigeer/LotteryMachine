@@ -1,7 +1,3 @@
-using LotteryMachine.Core.Models;
-using NuGet.Frameworks;
-using Utility.Extensions;
-
 namespace LotteryMachine.Test
 {
     public class Tests
@@ -41,8 +37,8 @@ namespace LotteryMachine.Test
                     l1.Add(t.Key);
                 count++;
             }
-            Console.WriteLine(((decimal)l1.Count / (decimal)10000));
-            Assert.IsTrue(((decimal)l1.Count / (decimal)10000).ToFixed(1) == 0.5m);
+            Console.WriteLine((l1.Count / (decimal)10000));
+            Assert.IsTrue((l1.Count / (decimal)10000).ToFixed(1) == 0.5m);
         }
     }
 }

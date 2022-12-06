@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Core", "LotteryMachine.Core\LotteryMachine.Core.csproj", "{CF750C08-9010-45EB-BE99-57501741C55A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Core", "src\LotteryMachine.Core\LotteryMachine.Core.csproj", "{CF750C08-9010-45EB-BE99-57501741C55A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{BB7BDAE2-658D-424C-A6E0-02A95667143D}"
 	ProjectSection(SolutionItems) = preProject
-		..\.gitignore = ..\.gitignore
-		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
+		.gitignore = .gitignore
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		NuGet.Config = NuGet.Config
 		README.md = README.md
 	EndProjectSection
@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{628F9947-00E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5D456E3A-B4A8-474B-B1A7-DA78484C85ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Web", "LotteryMachine.Web\LotteryMachine.Web.csproj", "{EFA7FA3E-A544-4C72-993A-71561F54CEE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Web", "src\LotteryMachine.Web\LotteryMachine.Web.csproj", "{EFA7FA3E-A544-4C72-993A-71561F54CEE9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Test", "LotteryMachine.Test\LotteryMachine.Test.csproj", "{0FF60B24-26BD-4742-BB74-3A630E88BE4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryMachine.Test", "test\LotteryMachine.Test\LotteryMachine.Test.csproj", "{0FF60B24-26BD-4742-BB74-3A630E88BE4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
