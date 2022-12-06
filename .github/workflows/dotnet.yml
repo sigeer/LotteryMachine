@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       ImageFullName: registry.cn-hangzhou.aliyuncs.com/sigeer/lottery_machine
-      VersionName: 9.3
+      VersionName: 9.2
 
     steps:
     - uses: actions/checkout@v3
