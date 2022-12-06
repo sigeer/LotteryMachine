@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LotteryMachine.Core\LotteryMachine.Core.csproj" />
+    <ProjectReference Include="..\..\src\LotteryMachine.Core\LotteryMachine.Core.csproj" />
   </ItemGroup>
 
 </Project>

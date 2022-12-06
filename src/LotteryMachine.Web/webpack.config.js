@@ -78,7 +78,7 @@ const compileScss = function (entry, outputDir) {
         console.log("compileScss catch");
         console.log(err);
     }
-    console.log("compileScss finished");
+    console.log("CompileScss finished");
 }
 
 const fgColors = {

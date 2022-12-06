@@ -21,7 +21,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 //¼ÆËã
-app.MapPost("/run", [HttpPost](ModelBase model) =>
+app.MapPost("/run", [HttpPost] (ModelBase model) =>
 {
     var m = model.AutoSelectItem();
     return m;

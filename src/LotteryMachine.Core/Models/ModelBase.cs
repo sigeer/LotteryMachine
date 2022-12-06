@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Utility.Extensions;
 
 namespace LotteryMachine.Core.Models
@@ -52,7 +51,7 @@ namespace LotteryMachine.Core.Models
 
     public class ItemBase
     {
-        public Guid Key { get; set; } 
+        public Guid Key { get; set; }
         public string Name { get; set; }
         public decimal Rate { get; set; }
     }

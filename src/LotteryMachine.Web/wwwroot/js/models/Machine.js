@@ -8,20 +8,38 @@ export class Machine {
         this.items = (json.items ?? []).map(x => new MachineItem(x));
     }
 
-    get MaxDigitCount() {
-        const defaultMax = 12;
+    get DigitCount() {
         let maxDigCount = 0;
         this.items.forEach(x => {
             let currentDigitalCount = getDigitalCount(x.rate);
             maxDigCount = maxDigCount > currentDigitalCount ? maxDigCount : currentDigitalCount;
         });
-        return maxDigCount > defaultMax ? defaultMax : maxDigCount;
+        return this.getRecommandDigitalCount(maxDigCount);
+    }
+
+    getRecommandDigitalCount(nowCount) {
+        const defaultMax = 12;
+        const defaultMin = 4;
+        if (nowCount > defaultMax)
+            return defaultMax;
+        if (nowCount < defaultMin)
+            return defaultMin;
+        return nowCount;
+    }
+
+    autoSet() {
+        let ave = +(1 / this.items.length);
+        let currentDigitalCount = getDigitalCount(ave);
+        let recommandCount = this.getRecommandDigitalCount(currentDigitalCount);
+        this.items.forEach(x => {
+            x.rate = +ave.toFixed(recommandCount)
+        });
     }
 
     validate() {
         if (this.items.length === 0 || String.isStringNullOrEmpty(this.name))
             return false;
-        return +this.items.reduce((a, b) => a + b.rate, 0).toFixed(this.MaxDigitCount) === 1
+        return +this.items.reduce((a, b) => a + b.rate, 0).toFixed(this.DigitCount - 1) === 1
     }
 
     addItem() {
@@ -36,7 +54,7 @@ export class Machine {
         if (!this.validate())
             throw new Error();
 
-        let maxVal = Math.pow(10, this.MaxDigitCount);
+        let maxVal = Math.pow(10, this.DigitCount);
         let random = getRandom(0, maxVal);
         let minRange = 0;
         let maxRange = 0;
