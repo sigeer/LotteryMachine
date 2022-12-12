@@ -29,8 +29,8 @@
                         <button class="btn btn-danger" @click="removeItem(item)">删除</button>
                     </div>
                 </div>
-                <button class="btn btn-outline-info" style="width: 100%" @click="addItem">添加项</button>
-                <button class="btn btn-outline-secondary" style="width: 100%" @click="autoSet">平均</button>
+                <button class="btn btn-outline-info btn-sm" style="width: 100%" @click="addItem">添加项</button>
+                <button class="btn btn-outline-secondary btn-sm" style="width: 100%" @click="autoSet">平均</button>
             </div>
         </template>
         <template #modal-footer>
