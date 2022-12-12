@@ -30,8 +30,19 @@
 
     </div>
 
-    <div class="row" v-if="nowKey">
+    <div class="row" v-if="nowKey && resultItem">
         选择了【{{resultItem.name}}】 - 生成时间：{{new Date()}}
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div>本次会话共随机了<b>{{ totalCount }}</b>次,其中 </div>
+        <ul>
+            <li v-for="x in nowSetting.items">
+                {{x.name}}（{{x.rate * 100}}%） : <b>{{recorder.eachCount[x.key] ?? 0}}次</b>
+            </li>
+        </ul>
     </div>
 
     <editing-modal ref="editor" @submit="onSubmit">
@@ -148,12 +159,23 @@
                 Vue.nextTick(() => {
                     const item = Vue.unref(nowSetting).run();
                     resultKey.value = item.key;
+
+                    totalCount.value++;
+                    recorder.eachCount[resultKey.value] = (recorder.eachCount[resultKey.value] ?? 0) + 1;
                 });
             }
 
             const onSettingChange = () => {
                 resultKey.value = 0;
+
+                totalCount.value = 0;
+                recorder.eachCount = [];
             }
+
+            const totalCount = Vue.ref(0);
+            const recorder = Vue.reactive({
+                eachCount: []
+            });
 
             return {
                 nowKey,
@@ -163,6 +185,8 @@
                 resultItem,
 
                 run,
+                totalCount,
+                recorder,
 
                 dataRef,
                 editor,

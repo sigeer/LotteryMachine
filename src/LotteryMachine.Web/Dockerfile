@@ -8,7 +8,7 @@ EXPOSE 80
 FROM node:14 AS webpack
 WORKDIR /src
 COPY ./LotteryMachine.Web .
-RUN npm install && npm run dev
+RUN npm install && npm run pro
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src

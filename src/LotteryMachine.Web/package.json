@@ -21,7 +21,8 @@
     "webpack-cli": "^5.0.0"
   },
   "scripts": {
-    "dev": "webpack"
+    "dev": "webpack",
+    "pro": "webpack --mode production"
   },
   "author": "",
   "license": "ISC"
